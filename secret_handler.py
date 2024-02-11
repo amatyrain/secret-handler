@@ -1,10 +1,12 @@
 import os
 from dotenv import load_dotenv
+from functools import lru_cache
 
 
 class SecretHandler:
     """_summary_"""
 
+    @lru_cache
     def get_secrets(self) -> dict:
         # .envから環境変数を取得
         current_dir = os.path.dirname(os.path.abspath(__file__))
