@@ -11,7 +11,7 @@ class SecretHandler:
         secrets = os.environ
 
         if len(secret_keys) == 0:
-            return secrets
+            return dict(secrets)
 
         # .envからAmazonシークレットを設定
         current_dir = os.path.dirname(os.path.abspath(__file__))
