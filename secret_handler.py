@@ -49,7 +49,7 @@ class SecretHandler:
                 Names=parameter_names,
                 WithDecryption=True,
             )
-            print(response)
+            # print(response)
 
             for parameter in response["Parameters"]:
                 values = yaml.safe_load(parameter["Value"])
@@ -91,7 +91,7 @@ class SecretHandler:
                 Names=parameter_names,
                 WithDecryption=True,
             )
-            print(response)
+            # print(response)
 
             for parameter in response["Parameters"]:
                 values = yaml.safe_load(parameter["Value"])
@@ -104,13 +104,13 @@ class SecretHandler:
         return secrets
 
     def set_secrets(self, base_key: str, values: dict, secrets: dict):
-        print(f"base_key: {base_key}")
+        # print(f"base_key: {base_key}")
         for key, value in values.items():
             secret_key = base_key
             if isinstance(value, dict):
-                print(f"is_dict: {value}")
+                # print(f"is_dict: {value}")
                 secret_key = f"{secret_key}_{key}"
                 self.set_secrets(base_key=secret_key, values=value, secrets=secrets)
                 continue
-            print(f"secret_key: {secret_key}_{key}, value: {value}")
+            # print(f"secret_key: {secret_key}_{key}, value: {value}")
             secrets[f"{secret_key}_{key}"] = value
